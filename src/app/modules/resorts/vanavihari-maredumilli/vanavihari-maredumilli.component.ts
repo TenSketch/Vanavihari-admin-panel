@@ -96,7 +96,7 @@ export class VanavihariMaredumilliComponent {
     "4554333000000159087": {
         id: '4554333000000159087',
         week_day_bed_charge: 1500,
-        cottage_type: "Jungle Star Cottage 1",
+        cottage_type: "Permanent Cottage",
         max_guest: "2",
         week_day_rate: 5000,
         week_end_bed_charge: 1750,
@@ -108,7 +108,7 @@ export class VanavihariMaredumilliComponent {
     "4554333000000159121": {
         id: '4554333000000159121',
         week_day_bed_charge: 1500,
-        cottage_type: "Jungle Star Cottage 1",
+        cottage_type: "Permanent Cottage",
         max_guest: "2",
         week_day_rate: 5000,
         week_end_bed_charge: 1750,
@@ -144,7 +144,7 @@ export class VanavihariMaredumilliComponent {
     "4554333000000159081": {
         id: '4554333000000159081',
         week_day_bed_charge: 1500,
-        cottage_type: "Jungle Star Cottage 1",
+        cottage_type: "Permanent Cottage",
         max_guest: "2",
         week_day_rate: 5000,
         week_end_bed_charge: 1750,
@@ -156,7 +156,7 @@ export class VanavihariMaredumilliComponent {
     "4554333000000148003": {
         id: '4554333000000148003',
         week_day_bed_charge: 500,
-        cottage_type: "Jungle Star Cottage 1",
+        cottage_type: "Permanent Cottage",
         max_guest: "",
         week_day_rate: 2500,
         week_end_bed_charge: 700,
@@ -168,7 +168,7 @@ export class VanavihariMaredumilliComponent {
     "4554333000000159109": {
         id: '4554333000000159109',
         week_day_bed_charge: 1500,
-        cottage_type: "Jungle Star Cottage 1",
+        cottage_type: "Permanent Cottage",
         max_guest: "2",
         week_day_rate: 5000,
         week_end_bed_charge: 1750,
@@ -192,7 +192,7 @@ export class VanavihariMaredumilliComponent {
     "4554333000000159127": {
         id: '4554333000000159127',
         week_day_bed_charge: 1500,
-        cottage_type: "Jungle Star Cottage 1",
+        cottage_type: "Permanent Cottage",
         max_guest: "2",
         week_day_rate: 5000,
         week_end_bed_charge: 1750,
@@ -240,7 +240,7 @@ export class VanavihariMaredumilliComponent {
     "4554333000000159103": {
         id: '4554333000000159103',
         week_day_bed_charge: 1500,
-        cottage_type: "Jungle Star Cottage 1",
+        cottage_type: "Permanent Cottage",
         max_guest: "2",
         week_day_rate: 5000,
         week_end_bed_charge: 1750,
@@ -288,7 +288,7 @@ export class VanavihariMaredumilliComponent {
     "4554333000000159133": {
         id: '4554333000000159133',
         week_day_bed_charge: 1500,
-        cottage_type: "Jungle Star Cottage 1",
+        cottage_type: "Permanent Cottage",
         max_guest: "2",
         week_day_rate: 5000,
         week_end_bed_charge: 1750,
@@ -300,7 +300,7 @@ export class VanavihariMaredumilliComponent {
     "4554333000000159093": {
         id: '4554333000000159093',
         week_day_bed_charge: 1500,
-        cottage_type: "Jungle Star Cottage 1",
+        cottage_type: "Permanent Cottage",
         max_guest: "2",
         week_day_rate: 5000,
         week_end_bed_charge: 1750,
@@ -312,7 +312,7 @@ export class VanavihariMaredumilliComponent {
     "4554333000000159073": {
         id: '4554333000000159073',
         week_day_bed_charge: 1500,
-        cottage_type: "Jungle Star Cottage 1",
+        cottage_type: "Permanent Cottage",
         max_guest: "2",
         week_day_rate: 5000,
         week_end_bed_charge: 1750,
@@ -384,7 +384,7 @@ export class VanavihariMaredumilliComponent {
     "4554333000000159115": {
         id: '4554333000000159115',
         week_day_bed_charge: 1500,
-        cottage_type: "Jungle Star Cottage 1",
+        cottage_type: "Permanent Cottage",
         max_guest: "2",
         week_day_rate: 5000,
         week_end_bed_charge: 1750,
