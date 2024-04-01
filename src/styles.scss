@@ -5,7 +5,7 @@
 html {
   font-size: 15px;
 
-  @media(min-width:600px) {
+  @media (min-width: 600px) {
     font-size: 14px;
   }
 }
@@ -23,36 +23,42 @@ body {
 
 a {
   // cursor: pointer;
-  color: $clr-primary-dark!important;
+  color: $clr-primary-dark !important;
   cursor: pointer;
-  text-decoration: underline!important;
+  text-decoration: underline !important;
 }
 
 img {
   max-width: 100%;
   height: auto;
 }
-h1, h2, h3, h4, h5, h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: $clr-secondary;
 }
 
-.container{
-  @media(max-width:576px) {
+.container {
+  @media (max-width: 576px) {
     padding-inline: 2rem;
   }
 }
 .logo {
   width: min(65%, 200px);
 }
-.fa-solid, .fa-regular{
-  font-size: 1.1rem!important;
+.fa-solid,
+.fa-regular {
+  font-size: 1.1rem !important;
   // margin-right: 5px;
 }
-.dropdown-item{
-  &:hover{
+.dropdown-item {
+  &:hover {
     cursor: pointer;
   }
-  &:active{
+  &:active {
     background-color: hsl($hue-primary, $saturation-primary, 85%);
   }
 }
@@ -63,10 +69,8 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .breadcrumb-item {
-
   // The separator between breadcrumbs (by default, a forward-slash: "/")
-  +.breadcrumb-item {
-
+  + .breadcrumb-item {
     //   padding-left: var(--#{$prefix}breadcrumb-item-padding-x);
     &::before {
       // float: left; // Suppress inline spacings and underlining of the separator
@@ -104,7 +108,7 @@ h1, h2, h3, h4, h5, h6{
   background-blend-mode: overlay;
   color: white;
   min-height: 70vh;
-  h1{
+  h1 {
     color: $clr-light;
   }
 }
@@ -124,13 +128,11 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .custom-form-no-stretch {
-
   // background-color: transparent !important;
   @media (min-width: 600px) {
     width: unset !important;
   }
 }
-
 
 .font-weight-bold {
   font-weight: 600 !important;
@@ -188,4 +190,33 @@ select {
     top: 0;
     left: 0;
   }
+}
+.mat-checkbox-layout {
+  background-color: #4d9900;
+}
+.custom-dropdown .mat-mdc-form-field
+  .mat-mdc-text-field-wrapper.mdc-text-field--outlined
+  .mat-mdc-form-field-infix {
+  padding: 5px !important;
+}
+.custom-dropdown .mat-mdc-form-field .mat-mdc-form-field-infix {
+  min-height: 33px !important;
+}
+.mat-mdc-form-field .mat-mdc-icon-button.mat-mdc-button-base {
+  height: 0px;
+}
+.mat-mdc-form-field .mdc-text-field .mdc-floating-label {
+  top: 50% !important;
+}
+.mat-mdc-form-field .mat-mdc-icon-button {
+  padding: 0px !important;
+}
+.custom-dropdown .mat-mdc-option {
+  min-height: 31px!important;
+}
+.mat-mdc-form-field-hint-wrapper{
+  padding: 5px 0px!important;
+}
+.mat-mdc-form-field-hint-wrapper, .mat-mdc-form-field-error-wrapper{
+  padding: 0px!important;
 }

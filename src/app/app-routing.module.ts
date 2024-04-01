@@ -16,6 +16,7 @@ import { MyBookingsComponent } from './modules/my-bookings/my-bookings.component
 import { EmailVerificationComponent } from './auth/email-verification/email-verification.component';
 import { ResortListingComponent } from './modules/resort-listing/resort-listing.component';
 import { BookingSummaryComponent } from './modules/booking-summary/booking-summary.component';
+import { ShowSuccessMessageComponent } from './auth/show-success-message/show-success-message.component';
 // import { RoomsComponent } from './modules/resorts/rooms/rooms.component';
 
 
@@ -24,6 +25,7 @@ const routes: Routes = [
 {path:'home', component:HomeComponent}, 
 {path:'sign-in', component:SignInComponent}, 
 {path:'sign-up', component:SignUpComponent},
+{path:'success', component:ShowSuccessMessageComponent},
 {path:'email-verification/:userid/:token', component: EmailVerificationComponent},
 {path:'about-vanavihari', component:AboutVanavihariComponent}, 
 {path:'my-account/settings', component: SettingsComponent},

@@ -7,6 +7,8 @@ import { AuthService } from '../../auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Regex } from 'src/app/utility/regex';
+import { TermsModalComponentComponent } from 'src/app/modules/terms-modal-component/terms-modal-component.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-sign-up',
@@ -21,7 +23,8 @@ export class SignUpComponent implements OnInit {
   repeat_password: any;
   password_hide = true;
   repeate_password_hide = true;
-
+  isChecked:boolean =false
+  termsAccepted: boolean = false
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -31,6 +34,8 @@ export class SignUpComponent implements OnInit {
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
     private sanitizer: DomSanitizer,
+    private dialog: MatDialog,
+   
   ) {}
   // {
   //   this.form = this.formBuilder.group(
@@ -127,8 +132,13 @@ export class SignUpComponent implements OnInit {
   passwordMatchValidator(form: FormGroup) {
     const password = form.get('password')?.value;
     const repeatPassword = form.get('repeat_password')?.value;
-    return password === repeatPassword ? null : { passwordsNotMatch: true };
-  }
+    if (password !== repeatPassword) {
+      form.get('repeat_password')?.setErrors({ passwordsNotMatch: true });
+    } else {
+      form.get('repeat_password')?.setErrors(null);
+    }
+  
+    return null;  }
 
   togglePasswordVisibility(): void {
     this.password_hide = !this.password_hide;
@@ -145,7 +155,7 @@ export class SignUpComponent implements OnInit {
       })
       .afterDismissed()
       .subscribe(() => {
-        this.router.navigate(['/sign-in']);
+        this.router.navigate(['/success'],{queryParams: {id:this.form.value.email_id}});
       });
   }
   showErrorAlert(msg = '') {
@@ -155,5 +165,28 @@ export class SignUpComponent implements OnInit {
   }
   goToSignin() {
     this.router.navigate(['/sign-in']);
+  }
+  
+  openTermsModal(checked:any) {
+    this.termsAccepted = checked.checked
+    this.isChecked = false;
+    if (!this.isChecked) {
+      const dialogRef = this.dialog.open(TermsModalComponentComponent, {
+        disableClose: true,
+        
+      });
+
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result === 'agree') {
+          this.isChecked = true;
+          checked=true
+          this.termsAccepted = checked
+        }else {
+          this.isChecked = false;
+          checked=false
+          this.termsAccepted = checked
+      }
+      });
+    }
   }
 }

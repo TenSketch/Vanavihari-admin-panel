@@ -64,6 +64,8 @@ import { MyBookingsComponent } from './modules/my-bookings/my-bookings.component
 import { JungleStarValamuruComponent } from './modules/resorts/jungle-star-valamuru/jungle-star-valamuru.component';
 import { ResortListingComponent } from './modules/resort-listing/resort-listing.component';
 import { BookingSummaryComponent } from './modules/booking-summary/booking-summary.component';
+import { TermsModalComponentComponent } from './modules/terms-modal-component/terms-modal-component.component';
+import { ShowSuccessMessageComponent } from './auth/show-success-message/show-success-message.component';
 // import { RoomsComponent } from './modules/resorts/rooms/rooms.component';
 
 @NgModule({
@@ -86,6 +88,8 @@ import { BookingSummaryComponent } from './modules/booking-summary/booking-summa
     JungleStarValamuruComponent,
     ResortListingComponent,
     BookingSummaryComponent,
+    TermsModalComponentComponent,
+    ShowSuccessMessageComponent,
     // RoomsComponent,
 
   ],

@@ -1,6 +1,6 @@
 <section class="search-rooms">
   <form #searchForm="ngForm">
-    <div class="row align-items-center justify-content-center gap-3 gap-lg-0">
+    <div class="row align-items-top justify-content-center gap-3 gap-lg-0">
       <div class="col-lg-3">
         <mat-form-field appearance="outline">
           <mat-label>Select Resort</mat-label>
@@ -14,8 +14,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Checkin & Checkout</mat-label>
           <mat-date-range-input [rangePicker]="picker" (click)="picker.open()">
-            <input matStartDate placeholder="Checkin date" [(ngModel)]="checkinDate" name="CheckinDate" (dateChange)="onDateChange('checkin', $event)"/>
-            <input matEndDate placeholder="Checkout date" [(ngModel)]="checkoutDate" name="CheckOutDate" (dateChange)="onDateChange('checkout', $event)"/>
+            <input matStartDate  placeholder="Checkin date" name="CheckinDate"  (dateChange)="checkinDate = formatDate($event.value)"/>
+            <input matEndDate  placeholder="Checkout date" name="CheckOutDate"  (dateChange)="checkoutDate = formatDate($event.value)" />
           </mat-date-range-input>
           <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
