@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -7,6 +7,7 @@ import { AuthService } from '../../../../app/auth.service';
 // import { UserService } from '../../user.service';
 import { SharedService } from '../../../shared.service';
 import { Subscription } from 'rxjs';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 interface Room {
   //roomId:string;
@@ -33,6 +34,7 @@ interface Room {
 export class VanavihariMaredumilliComponent {
   private fetchRoomListSubscription: Subscription;
   selectedSortOption: string;
+  panelOpenState = false;
   showBookingSummary: boolean = false;
   roomCards: any[] = [];
   roomIds: any[] = [];
@@ -42,13 +44,31 @@ export class VanavihariMaredumilliComponent {
   checkoutDate: Date;
   selected: string = '';
   isChecked: boolean = false;
+  isAddedExtraGuest = false
+  isMobile: boolean = false;
+  expandable:boolean=false
+  @HostBinding('class.sticky')
+  get stickyClass() {
+    console.log("this.isMobile000000",this.isMobile)
+    return this.isMobile;
+  }
+
+ 
   constructor(
     private router: Router,
     private http: HttpClient,
     private snackBar: MatSnackBar,
     private authService: AuthService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private breakpointObserver: BreakpointObserver
   ) {
+    this.breakpointObserver.observe([
+      Breakpoints.HandsetPortrait,
+      Breakpoints.HandsetLandscape
+    ]).subscribe(result => {
+      console.log("result====",result)
+      this.isMobile = result.matches;
+    });
     this.selectedSortOption = 'lowToHigh';
 
     if(this.authService.getSearchData("resort") != '' && this.authService.getSearchData("checkin") != '' && this.authService.getSearchData("checkout") != '') {
@@ -65,7 +85,9 @@ export class VanavihariMaredumilliComponent {
       this.fetchRoomList();
     });
   }
-
+  toggleBookingSummary() {
+    this.showBookingSummary = !this.showBookingSummary;
+  }
   staticRoomsDetails() {
     interface RoomDetails {
       id: string;
@@ -91,7 +113,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 4500,
         name: "BULBUL",
         resort: "Vanavihari, Maredumilli",
-        max_adult: 4
+        max_adult: 2
     },
     "4554333000000159087": {
         id: '4554333000000159087',
@@ -103,7 +125,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 7500,
         name: "Vanya",
         resort: "Jungle Star, Valamuru",
-        max_adult: 3
+        max_adult: 2
     },
     "4554333000000159121": {
         id: '4554333000000159121',
@@ -175,7 +197,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 7500,
         name: "Ambara",
         resort: "Jungle Star, Valamuru",
-        max_adult: 3
+        max_adult: 2
     },
     "4554333000000110059": {
         id: '4554333000000110059',
@@ -199,7 +221,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 7500,
         name: "Vennela",
         resort: "Jungle Star, Valamuru",
-        max_adult: 3
+        max_adult: 2
     },
     "4554333000000159007": {
         id: '4554333000000159007',
@@ -211,7 +233,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 3500,
         name: "CHOUSINGHA",
         resort: "Vanavihari, Maredumilli",
-        max_adult: 3
+        max_adult: 2
     },
     "4554333000000159025": {
         id: '4554333000000159025',
@@ -223,7 +245,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 3500,
         name: "BAHUDA",
         resort: "Vanavihari, Maredumilli",
-        max_adult: 3
+        max_adult: 2
     },
     "4554333000000110053": {
         id: '4554333000000110053',
@@ -247,7 +269,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 7500,
         name: "Aditya",
         resort: "Jungle Star, Valamuru",
-        max_adult: 3
+        max_adult: 2
     },
     "4554333000000159049": {
         id: '4554333000000159049',
@@ -259,7 +281,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 4500,
         name: "WOODPECKER",
         resort: "Vanavihari, Maredumilli",
-        max_adult: 3
+        max_adult: 2
     },
     "4554333000000159031": {
         id: '4554333000000159031',
@@ -271,7 +293,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 3500,
         name: "TAPATHI",
         resort: "Vanavihari, Maredumilli",
-        max_adult: 3
+        max_adult: 2
     },
     "4554333000000159055": {
         id: '4554333000000159055',
@@ -283,7 +305,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 4500,
         name: "KINGFISHER",
         resort: "Vanavihari, Maredumilli",
-        max_adult: 4
+        max_adult: 2
     },
     "4554333000000159133": {
         id: '4554333000000159133',
@@ -295,7 +317,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 7500,
         name: "Agathi",
         resort: "Jungle Star, Valamuru",
-        max_adult: 3
+        max_adult: 2
     },
     "4554333000000159093": {
         id: '4554333000000159093',
@@ -307,7 +329,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 7500,
         name: "Prakruti",
         resort: "Jungle Star, Valamuru",
-        max_adult: 3
+        max_adult: 2
     },
     "4554333000000159073": {
         id: '4554333000000159073',
@@ -319,7 +341,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 7500,
         name: "Aranya",
         resort: "Jungle Star, Valamuru",
-        max_adult: 3
+        max_adult: 2
     },
     "4554333000000159019": {
         id: '4554333000000159019',
@@ -331,7 +353,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 3500,
         name: "NARMADA",
         resort: "Vanavihari, Maredumilli",
-        max_adult: 3
+        max_adult: 2
     },
     "4554333000000159013": {
         id: '4554333000000159013',
@@ -343,7 +365,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 3500,
         name: "SAMBAR",
         resort: "Vanavihari, Maredumilli",
-        max_adult: 3
+        max_adult: 2
     },
     "4554333000000110065": {
         id: '4554333000000110065',
@@ -367,7 +389,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 3500,
         name: "Chital",
         resort: "Vanavihari, Maredumilli",
-        max_adult: 3
+        max_adult: 2
     },
     "4554333000000159037": {
         id: '4554333000000159037',
@@ -379,7 +401,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 4500,
         name: "HORNBILL",
         resort: "Vanavihari, Maredumilli",
-        max_adult: 4
+        max_adult: 2
     },
     "4554333000000159115": {
         id: '4554333000000159115',
@@ -391,7 +413,7 @@ export class VanavihariMaredumilliComponent {
         week_end_rate: 7500,
         name: "Avani",
         resort: "Jungle Star, Valamuru",
-        max_adult: 3
+        max_adult: 2
     }
     };
     const jsonArray = Object.keys(json).map(key => {
@@ -567,5 +589,8 @@ export class VanavihariMaredumilliComponent {
   }
   trackByRoomCard(index: number, card: any): string {
     return card.roomName;
+  }
+  extraGuest(checked: boolean) {
+    this.isAddedExtraGuest = checked;
   }
 }

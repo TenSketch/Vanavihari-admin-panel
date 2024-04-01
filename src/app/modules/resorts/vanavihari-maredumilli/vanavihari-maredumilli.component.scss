@@ -1,9 +1,9 @@
 @use "/src/scss/base/" as *;
 
 .page-banner {
-  background-image: url('/assets/img/home-gallery/vanavihari-home-gallery-1.jpg');
+  background-image: url("/assets/img/home-gallery/vanavihari-home-gallery-1.jpg");
 }
-.card1{
+.card1 {
   line-height: 2;
 }
 .breadcrumb {
@@ -33,23 +33,20 @@
   color: #ffd700;
 
   &::before {
-    content: '\2605\2605\2605\2605';
+    content: "\2605\2605\2605\2605";
   }
 
   &::after {
-    content: '\2606';
+    content: "\2606";
     margin-left: 3px;
   }
-
 }
-
 
 aside {
   background-color: hsl($hue-primary, $saturation-primary, 85%);
   padding: 20px;
 
-
-  @media(min-width:768px) {
+  @media (min-width: 768px) {
     // flex-basis: 35%;
     top: 5%;
     // margin-top: 2rem;
@@ -58,7 +55,6 @@ aside {
     right: 0;
     z-index: 1000;
     // position: relative;
-
   }
 
   .booking-summary-bar {
@@ -86,12 +82,37 @@ aside {
 
 main {
   &.rooms-listing {
-
     // margin-left: 0;
     // transition: margin-left 0.5s;
-    @media(min-width:768px) {
+    @media (min-width: 768px) {
       // flex-basis: 65%;
-
     }
   }
+}
+
+.position-sticky-for-mobile {
+  top: 14%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  position: sticky;
+  width: 92%;
+  margin: auto;
+  padding: 6px !important;
+  h4,
+  .custom-text {
+    font-size: 15px;
+  }
+}
+.accordion-body {
+  height: 335px;
+  overflow: scroll;
+}
+.policy-section {
+  background: hsl(90, 100%, 85%);
+  padding: 20px;
+  margin: 20px 0px;
+}
+.custom-h4{
+  padding-left: 10px;
 }
