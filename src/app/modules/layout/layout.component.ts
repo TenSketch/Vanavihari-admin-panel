@@ -70,6 +70,10 @@ export class LayoutComponent implements OnInit {
   goToJungleStar() {
     this.router.navigate(['/dashboard']);
   }
+  goToTourist()
+  {
+    this.router.navigate(['/tourist-destination']);
+  }
   goToTribalPg() {
     this.router.navigate(['/tribal-community']);
   } 
