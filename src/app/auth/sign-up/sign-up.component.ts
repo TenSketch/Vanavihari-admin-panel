@@ -25,6 +25,7 @@ export class SignUpComponent implements OnInit {
   repeate_password_hide = true;
   isChecked:boolean =false
   termsAccepted: boolean = false
+  isLoading:boolean=false
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -78,7 +79,8 @@ export class SignUpComponent implements OnInit {
       return null; // Return null when validation succeeds
     }
     this.form = this.formBuilder.group({
-      full_name: ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z]+(?:\\s[a-zA-Z]+)*$')])],
+      full_name: ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z.]+(?:\\s[a-zA-Z.]+)*$')
+    ])],
       // mobile_number: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10)])],
       mobile_number: ['', Validators.compose([
         Validators.required,
@@ -102,6 +104,7 @@ export class SignUpComponent implements OnInit {
     this.password = this.form.value.password;
     this.repeat_password = this.form.value.repeat_password;
     if (this.form.valid) {
+      this.isLoading=true
       const params = new HttpParams()
         .set('fullname', this.form.value.full_name)
         .set('email', this.form.value.email_id)
@@ -115,17 +118,27 @@ export class SignUpComponent implements OnInit {
         )
         .subscribe({
           next: (response) => {
-            if (response.code == 3000 && response.result.status == 'success')
+            if (response.code == 3000 && response.result.status == 'success'){
+              this.isLoading =false
               this.showSuccessAlert();
-            else if (response.code == 3000)
+            }
+            else if (response.code == 3000){
+              this.isLoading =false
               this.showErrorAlert(response.result.msg);
-            else this.showErrorAlert('Please Check Input Fields!');
-          },
+            }
+            
+            else {
+              this.isLoading =false
+              this.showErrorAlert('Please Check Input Fields!');
+          }
+        },
           error: (err) => {
+            this.isLoading =false
             console.error('Error:', err);
           },
         });
     } else {
+      this.isLoading =false
       this.showErrorAlert('Please Fill Form!');
     }
   }
@@ -155,7 +168,9 @@ export class SignUpComponent implements OnInit {
       })
       .afterDismissed()
       .subscribe(() => {
+        
         this.router.navigate(['/success'],{queryParams: {id:this.form.value.email_id}});
+        this.isLoading =false
       });
   }
   showErrorAlert(msg = '') {
@@ -173,7 +188,6 @@ export class SignUpComponent implements OnInit {
     if (!this.isChecked) {
       const dialogRef = this.dialog.open(TermsModalComponentComponent, {
         disableClose: true,
-        
       });
 
       dialogRef.afterClosed().subscribe((result) => {

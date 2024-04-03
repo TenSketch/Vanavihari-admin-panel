@@ -46,7 +46,7 @@
           <ul>
             <li> <strong>Occupancy:</strong> 2 guests (1 extra allowed)
             </li>
-            <li> <strong>Amenities:</strong> AC, geyser, western toilet.
+            <li> <strong>Amenities:</strong> AC, geyser, western toilet, Prices exclude 12% GST.
 
             </li>
           </ul>
@@ -69,7 +69,7 @@
           </ul>
         </div>
         <div class="col-sm-12 col-lg-4">
-          <h4 class="custom-h4">Check-In/Out
+          <h4 class="custom-h4">Check-In/Out:
 
           </h4>
           <ul>
@@ -360,15 +360,13 @@
           <div *ngIf="!loadingRooms; else loading">
             <div class="card mb-3 p-1" *ngFor="let room of roomCards">
               <div class="row g-0 d-flex ">
-                <div class="col-md-4 p-2">
+                <div class="col-md-3 p-2">
                   <img [src]="room.image" alt="Resort Room image">
                 </div>
-                <div class="col-md-8 p-3 ps-0 row m-0 justify-content-between">
-                  <div class="col-md-7">
-                    <h4>{{ room.name }}</h4>
-                    <h5>{{ room.cottage_type }}</h5>
-                    <h6>{{ room.resort }}</h6>
-
+                <div class="col-md-9 p-3 ps-0 row m-0">
+                  <div class="col-md-8">
+                    <h3>{{ room.name }}</h3>
+                    <h6>{{ room.cottage_type }}, {{ room.resort }}</h6>
                     <!-- {{ room.max_adult }} Guest{{ room.max_adult>1?'s':'' }}
                       {{ room.max_guest?', '+room.max_guest:'' }}        -->
                     <!-- +' Extra Guest'+(room.max_guest>1?'s':'') -->
@@ -386,20 +384,15 @@
                       </mat-form-field>
                       <mat-checkbox [(ngModel)]="isChecked">Extra adult/child over 5</mat-checkbox> -->
                   </div>
-                  <div class="col-md-5">
-                    <div class="d-flex justify-content-between">
-                      <span>
-                        <h6 class="p-0 m-0"><strong>{{ room.week_day_rate | currency: 'INR ': true: '1.2-2' }} </strong>
-                        </h6>
-                        <small>(For 2 guests)</small><br>
-                      </span>
-                      <span>
-                        <h6 class="p-0 m-0"><strong>500</strong>
-                        </h6>
-                        <small>(One extra guest)</small><br>
-                      </span>
-                    </div>
-                    <p class="text-center mt-3">GST @ 12% is applicable</p>
+                  <div class="col-md-4 text-end">
+                    <h6 class="p-0 m-0"><strong>{{ room.week_day_rate | currency: 'INR ': true: '1.2-2' }} </strong>
+                    </h6>
+
+                    <small>(For 2 guests)</small><br>
+                    <h6 class="p-0 m-0"><strong>{{ room.week_day_rate | currency: 'INR ': true: '1.2-2' }} </strong>
+                    </h6>
+                    <small>(For extra guests)</small><br>
+                    <small>+GST @ 12%</small>
                     <!-- <div><strong>{{ room.week_day_bed_charge | currency: 'INR ': true: '1.2-2' }}</strong></div>
                     <small>+ gst @ 12%</small><br>
                     <small>(for 1 Extra Bed)</small> -->
