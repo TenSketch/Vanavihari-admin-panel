@@ -13,7 +13,7 @@ import { AuthService } from '../../auth.service';
 })
 export class SignInComponent implements OnInit {
   form: FormGroup;
-
+  isLoading: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
@@ -40,28 +40,46 @@ export class SignInComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
+      this.isLoading = true;
       const params = new HttpParams()
         .set('username', this.form.value.email_address)
         .set('password', this.form.value.password);
 
-      this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=login', {params}).subscribe({
-        next: response => {
-          if(response.code == 3000 && response.result.status == 'success') {
-            this.router.navigate(['/home']);
-            this.showSnackBarAlert("Login Success. Token: "+response.result.token, false);
-            this.authService.setAccessToken(response.result.token);
-            this.authService.setAccountUsername(this.form.value.email_address);
-            this.authService.setAccountUserFullname(response.result.userfullname);
-          } else if (response.code == 3000) {
-            this.showSnackBarAlert(response.result.msg);
-          } else {
-            this.showSnackBarAlert("Please Check this Credential!");
-          }
-        },
-        error: err => {
-          console.error('Error:', err);
-        }
-      });
+      this.http
+        .get<any>(
+          'https://vanavihari-ng.netlify.app/zoho-connect?api_type=login',
+          { params }
+        )
+        .subscribe({
+          next: (response) => {
+            console.log('response--', response);
+            if (response.code == 3000 && response.result.status == 'success') {
+              this.router.navigate(['/home']);
+              this.isLoading = false;
+              this.showSnackBarAlert(
+                'Login Success. Token: ' + response.result.token,
+                false
+              );
+              this.authService.setAccessToken(response.result.token);
+              this.authService.setAccountUsername(
+                this.form.value.email_address
+              );
+              this.authService.setAccountUserFullname(
+                response.result.userfullname
+              );
+            } else if (response.code == 3000) {
+              this.isLoading = false;
+              this.showSnackBarAlert(response.result.msg);
+            } else {
+              this.isLoading = false;
+              this.showSnackBarAlert('Please Check this Credential!');
+            }
+          },
+          error: (err) => {
+            this.isLoading = false;
+            console.error('Error:', err);
+          },
+        });
     }
   }
 
@@ -75,6 +93,7 @@ export class SignInComponent implements OnInit {
   showSnackBarAlert(msg = '', redirect = true) {
     var snackBar = this.snackBar.open(msg, 'Close', {
       duration: 3000,
+      horizontalPosition: 'right',
     });
     if (redirect) {
       snackBar.afterDismissed().subscribe(() => {

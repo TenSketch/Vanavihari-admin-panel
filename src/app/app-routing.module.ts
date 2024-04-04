@@ -38,7 +38,7 @@ const routes: Routes = [
 {path:'awards-and-publications', component: AwardsNewsPublicationsComponent},
 {path:'booking-summary', component: BookingSummaryComponent},
 // {path:'resorts/rooms', component: RoomsComponent},
-
+{path: 'tourist-destination', component: TouristPlacesComponent},
 {path:'dashboard', component:SettingsComponent},
 
 { path:'resort-listing', component: ResortListingComponent},

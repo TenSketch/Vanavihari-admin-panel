@@ -220,3 +220,11 @@ select {
 .mat-mdc-form-field-hint-wrapper, .mat-mdc-form-field-error-wrapper{
   padding: 0px!important;
 }
+.loader{
+z-index: 9999;
+position: absolute;
+left: 50%;
+top: 50%;
+width: 10%;
+transform: translate(-50%, -50%);
+}
